@@ -17,8 +17,16 @@ public class TC1_GoogleTitleVerification {
         //2.Go to https://www.google.com
         driver.get("https://www.google.com");
         //3.Verify title:
-        System.out.println(driver.getTitle());
         //4.Expected: Google
+
+        String actualTitle=driver.getTitle();
+        String expectedTitle="Google";
+
+        if(actualTitle.equals(expectedTitle)){
+            System.out.println("Google title verification PASSED");
+        }else{
+            System.out.println("Google title verification FAILED!!!");
+        }
 
 
 
