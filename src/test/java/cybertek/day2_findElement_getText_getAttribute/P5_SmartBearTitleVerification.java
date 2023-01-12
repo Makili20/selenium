@@ -1,11 +1,9 @@
-package day2_findElement_getText_getAttribute;
+package cybertek.day2_findElement_getText_getAttribute;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.sql.SQLOutput;
 
 public class P5_SmartBearTitleVerification {
     public static void main(String[] args) throws InterruptedException {

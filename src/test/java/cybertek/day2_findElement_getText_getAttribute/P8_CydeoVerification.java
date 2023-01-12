@@ -1,4 +1,4 @@
-package day2_findElement_getText_getAttribute;
+package cybertek.day2_findElement_getText_getAttribute;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
