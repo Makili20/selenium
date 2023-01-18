@@ -104,7 +104,7 @@ public class DropDownsIntro {
        // 5. Deselect all values.
             multipleOptions.deselectAll();
         for (WebElement eachLanguage : languageList){
-        Assert.assertTrue(eachLanguage.isSelected());
+        Assert.assertTrue(!eachLanguage.isSelected());
     }
 
 
