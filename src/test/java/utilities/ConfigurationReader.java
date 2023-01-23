@@ -21,9 +21,12 @@ public class ConfigurationReader  {
       } catch (IOException e) {
           System.out.println("Properties file not found.");
       }
+  }
 
 
-
+  //Our own custom method to read and ge values from configuration.properties file
+  public static String getProperty(String keyWord){
+        return properties.getProperty(keyWord);
   }
 
 }
