@@ -16,6 +16,7 @@ public class ConfigurationReader  {
           FileInputStream file=new FileInputStream(path);
           //4-we need to load the file
           properties.load(file);
+
           //5-close.file
           file.close();
       } catch (IOException e) {
