@@ -11,6 +11,7 @@ import utilities.Driver;
 
 
 public class NegativeLoginTest {
+    LoginPage loginPage;
 @Ignore
     @Test
     public void negative_loginTest() {
@@ -58,9 +59,21 @@ public class NegativeLoginTest {
         Assert.assertEquals(actualText,expectedText);
     }
 
+    @Test
+    public void wrong_username_test(){
+        Driver.getDriver().get(ConfigurationReader.getProperty("vytrack_url"));
+        loginPage=new LoginPage();
+        String username="frgtbtb";
+        String password=ConfigurationReader.getProperty("storemanager_password");
+        loginPage.login(username,password);
 
+        //asserting that our error message is displayed
+        Assert.assertTrue(loginPage.errorMessage.isDisplayed());
 
-
-
+        //asserting the TEXT VAlUe of the error message
+        String actualText=loginPage.errorMessage.getText();
+        String expectedText="Invalid user name or password.";
+        Assert.assertEquals(actualText,expectedText);
+    }
 
 }
