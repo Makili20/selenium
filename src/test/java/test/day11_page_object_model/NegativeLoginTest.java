@@ -3,12 +3,15 @@ package test.day11_page_object_model;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
+import pages.LoginPage;
 import utilities.ConfigurationReader;
 import utilities.Driver;
 
-public class NegativeLoginTest {
 
+public class NegativeLoginTest {
+@Ignore
     @Test
     public void negative_loginTest() {
         Driver.getDriver().get(ConfigurationReader.getProperty("vytrack_url"));
@@ -17,7 +20,7 @@ public class NegativeLoginTest {
 
         WebElement loginButton = Driver.getDriver().findElement(By.id("_submit"));
 
-        String username=ConfigurationReader.getProperty("storemanager_username");
+        String username = ConfigurationReader.getProperty("storemanager_username");
 
         usernameInput.sendKeys(username);
 
@@ -25,9 +28,39 @@ public class NegativeLoginTest {
 
         loginButton.click();
 
-        WebElement errorMessage=Driver.getDriver().findElement(By.xpath("//div[@class='alert alert-error']"));
-        Assert.assertTrue(errorMessage.isDisplayed(),"Assert message is not displayed!");
+        WebElement errorMessage = Driver.getDriver().findElement(By.xpath("//div[@class='alert alert-error']"));
+        Assert.assertTrue(errorMessage.isDisplayed(), "Assert message is not displayed!");
     }
+
+    @Test
+    public void negative_login_test_with_page_object() {
+
+        Driver.getDriver().get(ConfigurationReader.getProperty("vytrack_url"));
+
+        LoginPage loginPage=new LoginPage();
+
+        //sending username
+        String username=ConfigurationReader.getProperty("storemanager_username");
+        loginPage.usernameInput.sendKeys(username);
+
+        //send our incorrect password
+        loginPage.passwordInput.sendKeys("fevrebgtb");
+
+        //click using our loginpage object
+        loginPage.loginButton.click();
+
+        //asserting that our error message is displayed
+        Assert.assertTrue(loginPage.errorMessage.isDisplayed());
+
+        //asserting the TEXT VAlUe of the error message
+        String actualText=loginPage.errorMessage.getText();
+        String expectedText="Invalid user name or password.";
+        Assert.assertEquals(actualText,expectedText);
+    }
+
+
+
+
 
 
 }
